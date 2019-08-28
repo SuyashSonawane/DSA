@@ -1,0 +1,30 @@
+h1{
+    color: red;
+    text-align: center;
+    animation: dance infinite 2s
+
+}
+body{
+    background-size:cover; 
+    /* background: url('https://media.giphy.com/media/JPsFUPp3vLS5q/giphy.gif') */
+}
+@keyframes dance{
+    from{
+        transform: scale(1)
+    }
+    to{
+        transform: scale(3)
+    }
+}
+@keyframes blink{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.blink{
+    animation: blink 0.2s infinite;
+    font-size: 3em
+}
