@@ -95,7 +95,29 @@ private:
             n->previous = temp;
         }
     }
-
+    int count()
+        {
+            node * temp=head;
+            int counter=0;
+            while(temp!=NULL)
+            {
+                counter++;
+                temp=temp->next;
+            }
+            return counter;
+        }
+        void make8(){
+        	int size=count();
+        	for(int i=0;i<8-size;i++){
+        		r_push(0);
+        	}
+        }
+        void make16(){
+          	int size=count();
+          	for(int i=0;i<16-size;i++){
+          		r_push(0);
+          	}
+          }
 public:
     void display()
     {
@@ -120,23 +142,6 @@ public:
             cout << temp->bit;
             temp = temp->previous;
         }
-    }
-    int count()
-    {
-        node * temp=head;
-        int counter=0;
-        while(temp!=NULL)
-        {
-            counter++;
-            temp=temp->next;
-        }
-        return counter;
-    }
-    void make8(){
-    	int size=count();
-    	for(int i=0;i<8-size;i++){
-    		r_push(0);
-    	}
     }
     Binary _1comp()
     {
@@ -172,8 +177,14 @@ public:
 Binary add(Binary a, Binary b)
 {
     Binary m;
-    a.make8();
-    b.make8();
+    if(a.count()<8 || b.count()<8){
+		a.make8();
+		b.make8();
+    }
+    else{
+    	a.make16();
+    	b.make16();
+    }
     int sum, carry = 0;
     node *temp_a = a.tail, *temp_b = b.tail;
     while (temp_a != NULL || temp_b != NULL)
@@ -195,7 +206,8 @@ int main()
     // comp = b._1comp();
     // comp.display();
 //    a.make8();
+    cout<<"Original number:: ";
+    a.display();
+    cout<<"\n2s number:: ";
     b.display();
-
-    // TODO make a menu
 }
